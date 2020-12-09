@@ -1,0 +1,19 @@
+<main-header></main-header>
+<div class="news-home container">
+    <ng-container *ngFor="let news of newsResponse">
+        <div class="jumbotron">
+            <h1 class="display-4">{{ news.headline }}</h1>
+            <p class="lead">{{news.date}}</p>
+            <hr class="my-4">
+            <p>{{ news.shortDescription }}</p>
+            <a class="btn btn-primary btn-lg" (click)="launch(news.url)" role="button">Read more</a>
+            <img *ngIf="!news.saving"
+                src="{{ !news.saved ? '../../../../assets/bookmark-add.svg' : '../../../../../assets/bookmark-added.svg' }}"
+                (click)="!news.saved ? saveNews(news) : removeSavedNews(news)" class="rounded float-right">
+            <div *ngIf="news.saving" class="spinner-border float-right" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </ng-container>
+</div>
+<router-outlet></router-outlet>
