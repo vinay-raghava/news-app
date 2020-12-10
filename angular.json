@@ -29,7 +29,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/public/_redirects"
+              "src/_redirects"
             ],
             "styles": [
               "src/styles.scss"
