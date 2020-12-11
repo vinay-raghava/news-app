@@ -1,4 +1,4 @@
 /get-latest-news https://vinaynewsservice.herokuapp.com/get-latest-news
 /countries https://vinaynewsservice.herokuapp.com/countries
-/saved-news https://vinaynewsservice.herokuapp.com/saved-news
+/saved-news https://vinaynewsservice.herokuapp.com/saved-news 200
 /*   /index.html   200
