@@ -2,8 +2,9 @@
 <div class="news-home container">
     <ng-container *ngFor="let news of newsResponse">
         <div class="jumbotron">
-            <h1 class="display-4">{{ news.headline }}</h1>
-            <p class="lead">{{news.date}}</p>
+            <img class="image-block" src="{{news.image}}">
+            <h2>{{ news.headline }}</h2>
+            <p class="lead">{{news.date | date: "dd-MMM-yyyy, hh:mm a"}}</p>
             <hr class="my-4">
             <p>{{ news.shortDescription }}</p>
             <a class="btn btn-primary btn-lg" (click)="launch(news.url)" role="button">Read more</a>
