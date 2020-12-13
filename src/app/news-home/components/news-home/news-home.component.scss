@@ -1,12 +1,19 @@
 .news-home {
-  .jumbotron {
-    .image-block {
-      height: 28rem;
-      width: 100%;
+    .jumbotron {
+        .image-block {
+            height: 28rem;
+            width: 100%;
+        }
     }
-  }
-  img {
-    height: 2rem;
-    cursor: pointer;
-  }
+    img {
+        height: 2rem;
+        cursor: pointer;
+    }
+}
+.load-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
 }

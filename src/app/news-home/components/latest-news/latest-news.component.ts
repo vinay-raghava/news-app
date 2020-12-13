@@ -9,7 +9,7 @@ import { NewsGetterService } from '../../services/news-getter.service';
 })
 export class LatestNewsComponent implements OnInit {
     public newsResponse: NewsResponse[] = [];
-
+    public isLoading = false;
     constructor(
         private newsGetterService: NewsGetterService,
         private log: LoggingService,
@@ -23,8 +23,10 @@ export class LatestNewsComponent implements OnInit {
      * Gets the latest news
      */
     private getLatestNews() {
+        this.isLoading = true;
         this.newsGetterService.getLatestNews().subscribe((response: NewsResponse[]) => {
             this.newsResponse = response;
+            this.isLoading = false;
             this.log.info('We got the latest news.');
         });
     }

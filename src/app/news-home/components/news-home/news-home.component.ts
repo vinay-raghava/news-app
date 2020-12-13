@@ -14,6 +14,7 @@ import { NewsSaverService } from '../../services/news-saver.service';
 })
 export class NewsHomeComponent {
     @Input() public newsResponse: NewsResponse[] = [];
+    @Input() public isLoading = false;
 
     constructor(
         private log: LoggingService,
@@ -41,7 +42,7 @@ export class NewsHomeComponent {
             },
             (error) => {
                 this.log.error(JSON.stringify(error));
-                setTimeout(() => news.saving = false, 2000);
+                news.saving = false;
             }
         );
     }
@@ -58,7 +59,7 @@ export class NewsHomeComponent {
             },
             (error) => {
                 this.log.error(JSON.stringify(error));
-                setTimeout(() => news.saving = false, 2000);
+                news.saving = false;
             }
         );
     }

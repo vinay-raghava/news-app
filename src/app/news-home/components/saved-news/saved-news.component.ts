@@ -1,4 +1,7 @@
+// Angular imports
 import { Component, OnInit } from '@angular/core';
+
+// Custom imports
 import { LoggingService } from 'src/app/shared';
 import { NewsResponse } from '../../interfaces/news-response';
 import { NewsGetterService } from '../../services/news-getter.service';
@@ -9,6 +12,7 @@ import { NewsGetterService } from '../../services/news-getter.service';
 })
 export class SavedNewsComponent implements OnInit {
     public newsResponse: NewsResponse[] = [];
+    public isLoading = false;
 
     constructor(
         private newsGetterService: NewsGetterService,
@@ -23,9 +27,16 @@ export class SavedNewsComponent implements OnInit {
      * Gets the saved news.
      */
     private getSavedNews() {
+        this.isLoading = true;
         this.newsGetterService.getSavedNews().subscribe((response: NewsResponse[]) => {
             this.newsResponse = response;
+            this.isLoading = false;
             this.log.info('We got the latest news.');
-        });
+        },
+            (error) => {
+                this.log.error(JSON.stringify(error));
+                this.isLoading = false;
+            }
+        );
     }
 }
