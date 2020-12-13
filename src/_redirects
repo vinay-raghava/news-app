@@ -2,5 +2,6 @@
 /login https://vinaynewsservice.herokuapp.com/login 200
 /get-latest-news https://vinaynewsservice.herokuapp.com/get-latest-news 200
 /countries https://vinaynewsservice.herokuapp.com/countries 200
+/saved-news https://vinaynewsservice.herokuapp.com/saved-news 200
 /saved-news/* https://vinaynewsservice.herokuapp.com/saved-news/:splat 200
 /*   /index.html   200
