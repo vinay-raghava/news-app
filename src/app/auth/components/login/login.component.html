@@ -1,0 +1,31 @@
+<div class="container shadow p-3 mb-5 bg-white rounded">
+    <div *ngIf="loginStatus === authorizationStatus.success" class="alert alert-success" role="alert">
+        Login success.
+    </div>
+    <div *ngIf="loginStatus === authorizationStatus.failed" class="alert alert-danger" role="alert">
+        Login failed. Try again.
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" #username="ngModel" id="inputUsername" class="form-control"
+                [(ngModel)]="loginCredentials.username" placeholder="Enter your username"
+                [ngClass]="{ 'border-danger': username.enabled && username.touched && username.dirty && username.errors }"
+                required name="username">
+            <small *ngIf="username.touched && username.dirty"
+                class="form-text text-danger">{{ username.errors | formValidationMessages : customErrorMessages.username }}</small>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" #password="ngModel" class="form-control" id="inputPassword" minlength="8"
+                [(ngModel)]="loginCredentials.password" placeholder="Enter password" required name="password"
+                [ngClass]="{ 'border-danger': password.enabled && password.touched && password.dirty && password.errors }">
+            <small *ngIf="password.touched && password.dirty"
+                class="form-text text-danger">{{ password.errors | formValidationMessages: customErrorMessages.password }}</small>
+        </div>
+        <a routerLink="/authorization/register"><small class="form-text text-muted">Not a registered user? Register
+                here.</small></a>
+        <button type="submit" [disabled]="!loginForm.valid || (loginStatus === authorizationStatus.pending)"
+            class="btn btn-primary">Login</button>
+    </form>
+</div>

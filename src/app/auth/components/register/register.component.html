@@ -1,0 +1,40 @@
+<div class="container shadow p-3 mb-5 bg-white rounded">
+    <div *ngIf="registrationStatus === authorizationStatus.success" class="alert alert-success" role="alert">
+        Registration success. Please login to continue
+    </div>
+    <div *ngIf="registrationStatus === authorizationStatus.failed" class="alert alert-danger" role="alert">
+        Registration failed. Try again.
+    </div>
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="inputUsername">Username</label>
+            <input type="text" #username="ngModel" id="inputUsername" class="form-control"
+                [(ngModel)]="userCredentials.username" placeholder="Enter your username"
+                [ngClass]="{ 'border-danger': username.enabled && username.touched && username.dirty && username.errors }"
+                required name="username">
+            <small *ngIf="username.touched && username.dirty"
+                class="form-text text-danger">{{ username.errors | formValidationMessages : customErrorMessages.username }}</small>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail">Email address</label>
+            <input type="email" #email="ngModel" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                [(ngModel)]="userCredentials.email" placeholder="Enter your email" required name="email"
+                [ngClass]="{ 'border-danger': email.enabled && email.touched && email.dirty && email.errors }" email>
+            <small *ngIf="email.touched && email.dirty"
+                class="form-text text-danger">{{ email.errors | formValidationMessages: customErrorMessages.email }}</small>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input type="password" #password="ngModel" class="form-control" id="inputPassword" minlength="8"
+                [(ngModel)]="userCredentials.password" placeholder="Enter password" required name="password"
+                [ngClass]="{ 'border-danger': password.enabled && password.touched && password.dirty && password.errors }">
+            <small *ngIf="password.touched && password.dirty"
+                class="form-text text-danger">{{ password.errors | formValidationMessages: customErrorMessages.password }}</small>
+        </div>
+        <a routerLink="/authorization/login"><small class="form-text text-muted">Already a registered user? Login
+                here.</small></a>
+        <button type="submit"
+            [disabled]="!registrationForm.valid || (registrationStatus === authorizationStatus.pending)"
+            class="btn btn-primary">Register</button>
+    </form>
+</div>
