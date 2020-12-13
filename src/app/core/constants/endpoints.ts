@@ -3,4 +3,5 @@ export class Endpoints {
   public static login = 'login';
   public static savedNews = 'saved-news';
   public static getLatestNews = 'get-latest-news';
+  public static countries = 'countries';
 }
