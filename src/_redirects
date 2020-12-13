@@ -1,5 +1,5 @@
-/register https://vinaynewsservice.herokuapp.com/register
-/login https://vinaynewsservice.herokuapp.com/login
+/register https://vinaynewsservice.herokuapp.com/register 200
+/login https://vinaynewsservice.herokuapp.com/login 200
 /get-latest-news https://vinaynewsservice.herokuapp.com/get-latest-news
 /countries https://vinaynewsservice.herokuapp.com/countries
 /saved-news/* https://vinaynewsservice.herokuapp.com/saved-news 200
