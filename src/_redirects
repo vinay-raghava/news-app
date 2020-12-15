@@ -4,4 +4,5 @@
 /countries https://vinaynewsservice.herokuapp.com/countries 200
 /saved-news https://vinaynewsservice.herokuapp.com/saved-news 200
 /saved-news/* https://vinaynewsservice.herokuapp.com/saved-news/:splat 200
+/user-details https://vinaynewsservice.herokuapp.com/user-details 200
 /*   /index.html   200
