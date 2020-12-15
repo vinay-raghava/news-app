@@ -1,7 +1,10 @@
+// Angular imports
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Endpoints } from 'src/app/core';
 
+// Custom imports
+import { Endpoints } from 'src/app/core';
 import { HttpService } from 'src/app/shared';
 import { NewsResponse } from '../interfaces/news-response';
 
@@ -12,10 +15,17 @@ export class NewsGetterService {
     ) { }
 
     /**
-     * Returns the observable of latest news response by calling the latest news API.
+     * Returns the observable of latest news response by calling the latest news API with the filter parameters.
      */
-    public getLatestNews(): Observable<NewsResponse[]> {
-        return this.httpService.get<NewsResponse>(Endpoints.getLatestNews);
+    public getLatestNews(country?: string, keyword?: string): Observable<NewsResponse[]> {
+        let params: { [key: string]: string } = {};
+        if (country) {
+            params['country'] = country;
+        }
+        if (keyword) {
+            params['keyword'] = keyword;
+        }
+        return this.httpService.get<NewsResponse>(Endpoints.getLatestNews, new HttpParams({ fromObject: Object(params) }));
     }
 
     /**
