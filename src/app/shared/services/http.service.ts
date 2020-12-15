@@ -25,7 +25,7 @@ export class HttpService {
     }
 
     /**
-     * Gets the data of type T by calling the GET on given API url.
+     * Gets the array data of type T by calling the GET on given API url.
      * @param url url of the API
      * @param parameters http params
      */
@@ -33,6 +33,18 @@ export class HttpService {
         return this.http.get<T[]>(url, { observe: 'response', params: parameters }).pipe(
             map(response => response.body ? response.body : []),
             catchError(this.handleError<T[]>())
+        );
+    }
+
+    /**
+     * Gets the data of type T by calling the GET on given API url.
+     * @param url url of the API
+     * @param parameters http params
+     */
+    public getOne<T>(url: string, parameters?: HttpParams): Observable<T> {
+        return this.http.get<T>(url, { observe: 'response', params: parameters }).pipe(
+            map(response => response.body ? response.body : <T>{}),
+            catchError(this.handleError<T>())
         );
     }
 
