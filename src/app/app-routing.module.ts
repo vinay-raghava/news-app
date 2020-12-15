@@ -15,11 +15,16 @@ const routes: Routes = [
     {
         path: 'authorization',
         loadChildren: () => import('./auth/authorization.module').then(m => m.AuthorizationModule)
+    },
+    {
+        path: '**',
+        redirectTo: 'news-home/page-not-found',
+        pathMatch: 'full'
     }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, { initialNavigation: 'enabled' })],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
