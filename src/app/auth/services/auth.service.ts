@@ -15,18 +15,20 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthService {
 
+    // 30 minutes
+    private readonly defaultExpiryTime = 30
     constructor(
         private httpService: HttpService,
         private cookieService: CookieService
     ) { }
 
     /**
-     * Stores the Authorization token to the cookie.
+     * Stores the Authorization token to the cookie with default expiry time.
      * @param authToken Authorization token
      */
     public storeAuthorizationToken(authToken: string) {
         this.cookieService.delete('Authorization');
-        this.cookieService.set('Authorization', authToken);
+        this.cookieService.set('Authorization', authToken, new Date(new Date().getTime() + this.defaultExpiryTime * 60000));
     }
 
     /**
