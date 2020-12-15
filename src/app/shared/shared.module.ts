@@ -9,6 +9,7 @@ import { FormValidationMessagesPipe } from './pipes/form-validation-messages.pip
 import { HttpService } from './services/http.service';
 import { LoggingService } from './services/logging.service';
 import { MainHeaderComponent } from './components/main-header/main-header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { MainHeaderComponent } from './components/main-header/main-header.compon
     ],
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule
     ]
 })
