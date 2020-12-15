@@ -1,1 +1,1 @@
-<news-home [newsResponse]="newsResponse" [isLoading]="isLoading"></news-home>
+<news-home [newsResponse]="newsResponse" [isLoading]="isLoading" (country)="fetchLatestNewsForCountry($event)" (keywordEm)="getLatestNews($event)"></news-home>
