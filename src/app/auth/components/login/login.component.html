@@ -1,4 +1,7 @@
+<main-header [disableCountrySearch]="true" [disableKeywordSearch]="true" [disableAccountDropdown]="true"></main-header>
 <div class="container shadow p-3 mb-5 bg-white rounded">
+    <div class="display-4">Login</div>
+    <div class="dropdown-divider"></div>
     <div *ngIf="loginStatus === authorizationStatus.success" class="alert alert-success" role="alert">
         Login success.
     </div>
@@ -10,7 +13,7 @@
             <label for="inputUsername">Username</label>
             <input type="text" #username="ngModel" id="inputUsername" class="form-control"
                 [(ngModel)]="loginCredentials.username" placeholder="Enter your username"
-                [ngClass]="{ 'border-danger': username.enabled && username.touched && username.dirty && username.errors }"
+                [ngClass]="{ 'is-invalid': username.enabled && username.touched && username.dirty && username.errors }"
                 required name="username">
             <small *ngIf="username.touched && username.dirty"
                 class="form-text text-danger">{{ username.errors | formValidationMessages : customErrorMessages.username }}</small>
@@ -19,7 +22,7 @@
             <label for="inputPassword">Password</label>
             <input type="password" #password="ngModel" class="form-control" id="inputPassword" minlength="8"
                 [(ngModel)]="loginCredentials.password" placeholder="Enter password" required name="password"
-                [ngClass]="{ 'border-danger': password.enabled && password.touched && password.dirty && password.errors }">
+                [ngClass]="{ 'is-invalid': password.enabled && password.touched && password.dirty && password.errors }">
             <small *ngIf="password.touched && password.dirty"
                 class="form-text text-danger">{{ password.errors | formValidationMessages: customErrorMessages.password }}</small>
         </div>
