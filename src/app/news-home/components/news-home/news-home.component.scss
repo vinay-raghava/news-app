@@ -1,19 +1,31 @@
-.news-home {
-    .jumbotron {
-        .image-block {
-            height: 28rem;
-            width: 100%;
+.news-home-container {
+    height: 100%;
+    main-header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+    .news-home {
+        margin-top: 4rem;
+        .jumbotron {
+            .image-block {
+                height: 28rem;
+                width: 100%;
+            }
+        }
+        img {
+            height: 2rem;
+            cursor: pointer;
+        }
+        .empty-message {
+            text-align: center;
         }
     }
-    img {
-        height: 2rem;
-        cursor: pointer;
+    .load-page {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
     }
-}
-.load-page {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100px;
-    height: 100px;
 }

@@ -1,5 +1,5 @@
 // Angular imports
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 // Custom imports
 import { LoggingService } from 'src/app/shared';
@@ -15,7 +15,11 @@ import { NewsSaverService } from '../../services/news-saver.service';
 export class NewsHomeComponent {
     @Input() public newsResponse: NewsResponse[] = [];
     @Input() public isLoading = false;
+    @Input() public disableKeywordSearch = false;
+    @Input() public disableCountrySearch = false;
 
+    @Output() public country: EventEmitter<string> = new EventEmitter<string>();
+    @Output() public keywordEm: EventEmitter<string> = new EventEmitter<string>();
     constructor(
         private log: LoggingService,
         private newsSaverService: NewsSaverService

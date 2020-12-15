@@ -1,25 +1,38 @@
-<main-header></main-header>
-<div class="news-home container" *ngIf="!isLoading; else loading">
-    <ng-container *ngFor="let news of newsResponse">
-        <div class="jumbotron">
-            <img class="image-block" src="{{news.image}}">
-            <h2>{{ news.headline }}</h2>
-            <p class="lead">{{news.date | date: "dd-MMM-yyyy, hh:mm a"}}</p>
-            <hr class="my-4">
-            <p>{{ news.shortDescription }}</p>
-            <a class="btn btn-primary btn-lg" (click)="launch(news.url)" role="button">Read more</a>
-            <img *ngIf="!news.saving"
-                src="{{ !news.saved ? '../../../../assets/bookmark-add.svg' : '../../../../../assets/bookmark-added.svg' }}"
-                (click)="!news.saved ? saveNews(news) : removeSavedNews(news)" class="rounded float-right">
-            <div *ngIf="news.saving" class="spinner-border float-right" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
+<div class="news-home-container">
+    <main-header [disableKeywordSearch]="disableKeywordSearch" [disableCountrySearch]="disableCountrySearch"
+        (country)="country.emit($event)" (keywordEm)="keywordEm.emit($event)"></main-header>
+    <div class="news-home container" *ngIf="newsResponse.length > 0; else emptyMessage">
+        <div *ngIf="!isLoading; else loading">
+            <ng-container *ngFor="let news of newsResponse">
+                <div class="jumbotron">
+                    <img class="image-block" src="{{news.image ? news.image : 'assets/default-news-image.png'}}">
+                    <h2>{{ news.headline }}</h2>
+                    <p class="lead">{{news.date | date: "dd-MMM-yyyy, hh:mm a"}}</p>
+                    <hr class="my-4">
+                    <p>{{ news.shortDescription }}</p>
+                    <a class="btn btn-primary btn-lg" (click)="launch(news.url)" role="button">Read more</a>
+                    <img *ngIf="!news.saving"
+                        src="{{ !news.saved ? 'assets/bookmark-add.svg' : 'assets/bookmark-added.svg' }}"
+                        (click)="!news.saved ? saveNews(news) : removeSavedNews(news)" class="rounded float-right">
+                    <div *ngIf="news.saving" class="spinner-border float-right" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </ng-container>
         </div>
-    </ng-container>
+    </div>
+    <ng-template #loading>
+        <div class="spinner-grow load-page" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </ng-template>
 </div>
-<ng-template #loading>
-    <div class="spinner-grow load-page" role="status">
-        <span class="sr-only">Loading...</span>
+<ng-template #emptyMessage>
+    <div class="container center-align-container">
+        <div class="centered-text text-muted display-4">
+            No news found.
+        </div>
+        <span></span>
     </div>
 </ng-template>
 <router-outlet></router-outlet>
