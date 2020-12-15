@@ -58,8 +58,11 @@ export class AuthInterceptor implements HttpInterceptor {
         }
     }
 
+    /**
+     * Navigates to login page.
+     */
     private navigateToLoginPage() {
-        this.router.navigateByUrl('/authorization');
+        this.router.navigate(['/authorization']);
         return EMPTY;
     }
 }
