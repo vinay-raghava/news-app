@@ -1,4 +1,10 @@
 # NewsApp
+This an news website which allows the user to view the latest news and save them to their account for reading again.  
+This repository is frontend repository developed in angular. The backend repository which gives the APIs and database access is available [here](https://github.com/vinay-raghava/news-service).
+
+You can visit the live website [here](https://vinay-news-app.netlify.app/)  
+
+![website screenshot](./src/assets/news.PNG)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
