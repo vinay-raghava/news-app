@@ -1,4 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-input.border-danger:focus {
-  box-shadow: 0 0 0 0.2rem rgb(255, 153, 153);
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+.center-align-container {
+  height: 100%;
+  text-align: center;
+  white-space: nowrap;
+  word-break: normal;
+  .centered-text {
+    vertical-align: middle;
+    display: inline-block;
+  }
+  span {
+    display: inline-block;
+    height: 90%;
+    vertical-align: middle;
+  }
 }
