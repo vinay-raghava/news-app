@@ -4,7 +4,7 @@ This repository is frontend repository developed in angular. The backend reposit
 
 You can visit the live website [here](https://vinay-news-app.netlify.app/)  
 
-![website screenshot](./src/assets/news.PNG)
+![website screenshot](./src/assets/news.PNG?raw=true)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
