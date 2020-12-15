@@ -1,8 +1,8 @@
 <div class="news-home-container">
     <main-header [disableKeywordSearch]="disableKeywordSearch" [disableCountrySearch]="disableCountrySearch"
         (country)="country.emit($event)" (keywordEm)="keywordEm.emit($event)"></main-header>
-    <div class="news-home container" *ngIf="newsResponse.length > 0; else emptyMessage">
-        <div *ngIf="!isLoading; else loading">
+    <ng-container *ngIf="!isLoading; else loading">
+        <div class="news-home container" *ngIf="newsResponse.length > 0; else emptyMessage">
             <ng-container *ngFor="let news of newsResponse">
                 <div class="jumbotron">
                     <img class="image-block" src="{{news.image ? news.image : 'assets/default-news-image.png'}}">
@@ -20,7 +20,7 @@
                 </div>
             </ng-container>
         </div>
-    </div>
+    </ng-container>
     <ng-template #loading>
         <div class="spinner-grow load-page" role="status">
             <span class="sr-only">Loading...</span>
